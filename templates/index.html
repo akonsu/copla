@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/static/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/snapshot.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+          var video = $("#video");
+
+          video.on("snapshot.oninit", function (e, options) { console.log("snapshot.oninit", options) });
+          video.on("snapshot.onerror", function (e, jqxhr, status, error) { console.log("snapshot.onerror", jqxhr, status, error) });
+          video.on("snapshot.onsuccess", function (e, data, status, jqxhr) { console.log("snapshot.onsuccess", data, status, jqxhr) });
+
+          video.snapshot({
+              "button": $("#link"),
+              "url": "http://remotehost.com:5000/save/"
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <video id="video" controls src="/static/movie.webm"></video>
+    <div><a id="link" href="#">capture</a></div>
+  </body>
+</html>
