@@ -6,13 +6,13 @@
     <script type="text/javascript" src="/static/snapshot.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
-          var video = $("#video");
+          var source = $("#source");
 
-          video.on("snapshot.oninit", function (e, options) { console.log("snapshot.oninit", options) });
-          video.on("snapshot.onerror", function (e, jqxhr, status, error) { console.log("snapshot.onerror", jqxhr, status, error) });
-          video.on("snapshot.onsuccess", function (e, data, status, jqxhr) { console.log("snapshot.onsuccess", data, status, jqxhr) });
+          source.on("snapshot.oninit", function (e, options) { console.log("snapshot.oninit", options) });
+          source.on("snapshot.onerror", function (e, jqxhr, status, error) { console.log("snapshot.onerror", jqxhr, status, error) });
+          source.on("snapshot.onsuccess", function (e, data, status, jqxhr) { console.log("snapshot.onsuccess", data, status, jqxhr) });
 
-          video.snapshot({
+          source.snapshot({
               "button": $("#link"),
               "url": "http://remotehost.com:5000/save/"
           });
@@ -20,7 +20,8 @@
     </script>
   </head>
   <body>
-    <video id="video" controls src="/static/movie.webm"></video>
+    <!--<img id="source" crossorigin="anonymous" src="http://movie.localhost.com:5000/picture.jpg">-->
+    <video id="source" crossorigin="anonymous" controls src="http://movie.localhost.com:8080/copla/static/movie.webm"></video>
     <div><a id="link" href="#">capture</a></div>
   </body>
 </html>
